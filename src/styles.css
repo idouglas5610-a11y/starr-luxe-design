@@ -248,6 +248,18 @@
   }
 }
 
+@utility btn-outline-light {
+  border: 1px solid var(--ivory);
+  background: transparent;
+  color: var(--ivory);
+  &:hover {
+    background: var(--ivory);
+    color: var(--charcoal);
+  }
+}
+
+
+
 @utility rule-champagne {
   display: block;
   width: 3.5rem;
