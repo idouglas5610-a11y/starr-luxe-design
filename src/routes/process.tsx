@@ -43,7 +43,7 @@ function ProcessPage() {
       />
       <ProcessSection />
       <section className="border-t border-border bg-cream">
-        <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10 lg:py-32">
+        <div className="section-pad mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">What to expect</p>
             <h2 className="display-lg mt-5">The experience, start to finish.</h2>

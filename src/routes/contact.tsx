@@ -29,7 +29,7 @@ function ContactPage() {
         intro="Tell us a little about your space and we'll follow up within two business days."
       />
       <section className="bg-background">
-        <div className="mx-auto grid max-w-[1400px] gap-16 px-6 py-24 lg:grid-cols-[1fr_1.4fr] lg:px-10 lg:py-32">
+        <div className="section-pad mx-auto grid max-w-[1400px] gap-16 px-6 lg:grid-cols-[1fr_1.4fr] lg:gap-24 lg:px-10">
           <Reveal>
             <p className="eyebrow">Studio details</p>
             <ul className="mt-8 space-y-6 text-sm font-light">
