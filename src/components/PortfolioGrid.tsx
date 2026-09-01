@@ -42,10 +42,10 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
         ))}
       </div>
 
-      <div className="mt-14 grid gap-x-10 gap-y-16 md:grid-cols-2">
+      <div className="mt-16 grid gap-x-14 gap-y-20 md:grid-cols-2">
         {filtered.map((project, i) => (
           <Reveal as="article" key={project.name} delay={i * 70} className="group">
-            <div className="img-zoom">
+            <div className="img-frame">
               <img
                 src={project.image}
                 alt={`${project.name} interior design project`}
@@ -55,19 +55,20 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
                 className="aspect-5/4 w-full object-cover"
               />
             </div>
-            <div className="mt-6 flex items-start justify-between gap-6">
+            <div className="mt-7 flex items-start justify-between gap-6">
               <div>
-                <h3 className="font-display text-2xl">{project.name}</h3>
-                <p className="mt-1 spaced-caps text-taupe">{project.location}</p>
+                <h3 className="font-display text-[1.75rem] leading-tight">{project.name}</h3>
+                <p className="mt-2 spaced-caps text-taupe">{project.location}</p>
               </div>
               <span className="mt-1 shrink-0 spaced-caps text-muted-foreground">
                 {project.category}
               </span>
             </div>
-            <p className="body-lg mt-4 max-w-md text-sm">{project.description}</p>
+            <p className="body-lg mt-5 max-w-md text-sm">{project.description}</p>
           </Reveal>
         ))}
       </div>
+
 
       {filtered.length === 0 ? (
         <p className="body-lg mt-14">No projects in this category yet.</p>

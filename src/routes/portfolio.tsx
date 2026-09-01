@@ -27,7 +27,7 @@ function PortfolioPage() {
         intro="A selection of recent work. Filter by the type of space to see how the same design language adapts across a home."
       />
       <section className="bg-background">
-        <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10 lg:py-32">
+        <div className="section-pad mx-auto max-w-[1400px] px-6 lg:px-10">
           <PortfolioGrid />
         </div>
       </section>
