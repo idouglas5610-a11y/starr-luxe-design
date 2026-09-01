@@ -166,42 +166,116 @@
 
 @utility eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 400;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--taupe);
+  line-height: 1;
 }
 
 @utility display-xl {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(2.75rem, 7vw, 5.5rem);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
+  font-size: clamp(3rem, 7.4vw, 6.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
 }
 
 @utility display-lg {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(2.25rem, 4.6vw, 3.75rem);
-  line-height: 1.08;
-  letter-spacing: -0.015em;
+  font-size: clamp(2.375rem, 4.9vw, 4.125rem);
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
 }
 
 @utility display-md {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(1.65rem, 2.6vw, 2.25rem);
-  line-height: 1.18;
+  font-size: clamp(1.75rem, 2.7vw, 2.5rem);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
 }
 
 @utility body-lg {
   font-size: 1.0625rem;
-  line-height: 1.75;
+  line-height: 1.85;
   color: var(--muted-foreground);
   font-weight: 300;
+  letter-spacing: 0.004em;
+  text-wrap: pretty;
 }
+
+/* Generous editorial section rhythm */
+@utility section-pad {
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
+  @media (min-width: 1024px) {
+    padding-top: 10.5rem;
+    padding-bottom: 10.5rem;
+  }
+}
+
+/* Soft tonal seam between adjacent sections */
+@utility seam-top {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 7rem;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--beige) 34%, transparent),
+      transparent
+    );
+  }
+}
+
+@utility hairline-top {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in oklab, var(--champagne) 70%, transparent) 22%,
+      color-mix(in oklab, var(--champagne) 70%, transparent) 78%,
+      transparent
+    );
+  }
+}
+
+/* Framed imagery with a warm inner edge */
+@utility img-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--beige);
+  & img {
+    transition: transform 1.4s cubic-bezier(0.16, 0.84, 0.16, 1);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--charcoal) 8%, transparent);
+  }
+  &:hover img {
+    transform: scale(1.04);
+  }
+}
+
 
 @utility btn-base {
   display: inline-flex;
