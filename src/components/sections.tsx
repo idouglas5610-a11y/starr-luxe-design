@@ -19,11 +19,12 @@ export function PageHero({
 }) {
   return (
     <section className="border-b border-border bg-cream">
-      <div className="mx-auto max-w-[1400px] px-6 py-20 lg:px-10 lg:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 pt-24 pb-20 lg:px-10 lg:pt-40 lg:pb-32">
         <Reveal>
           <p className="eyebrow">{eyebrow}</p>
-          <h1 className="display-lg mt-6 max-w-3xl">{title}</h1>
-          {intro ? <p className="body-lg mt-7 max-w-xl">{intro}</p> : null}
+          <span className="rule-champagne mt-7" />
+          <h1 className="display-lg mt-8 max-w-3xl">{title}</h1>
+          {intro ? <p className="body-lg mt-8 max-w-xl">{intro}</p> : null}
         </Reveal>
       </div>
     </section>
@@ -32,28 +33,30 @@ export function PageHero({
 
 export function ServicesSection({ compact = false }: { compact?: boolean }) {
   return (
-    <section className="border-t border-border bg-background">
-      <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10 lg:py-32">
+    <section className="seam-top bg-background">
+      <div className="section-pad mx-auto max-w-[1400px] px-6 lg:px-10">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">What we do</p>
-          <h2 className="display-lg mt-5">Services made to fit the way you live.</h2>
+          <h2 className="display-lg mt-6">Services made to fit the way you live.</h2>
         </Reveal>
 
-        <ul className="mt-16 grid gap-x-16 border-t border-border md:grid-cols-2">
+        <ul className="mt-20 grid gap-x-20 border-t border-border md:grid-cols-2">
           {services.map((service, i) => (
             <Reveal
               as="li"
               key={service.number}
               delay={i * 70}
-              className="group border-b border-border py-10"
+              className="group border-b border-border py-12 transition-colors duration-500 hover:bg-cream/60"
             >
-              <div className="flex items-baseline gap-6">
-                <span className="font-display text-2xl text-taupe">{service.number}</span>
+              <div className="flex items-baseline gap-8">
+                <span className="font-display text-2xl text-taupe transition-colors duration-500 group-hover:text-champagne">
+                  {service.number}
+                </span>
                 <div>
-                  <h3 className="text-base font-normal tracking-[0.14em] uppercase">
+                  <h3 className="text-[0.8125rem] font-normal tracking-[0.22em] uppercase">
                     {service.title}
                   </h3>
-                  <p className="body-lg mt-3 max-w-md">{service.description}</p>
+                  <p className="body-lg mt-4 max-w-md text-[1rem]">{service.description}</p>
                 </div>
               </div>
             </Reveal>
@@ -61,7 +64,7 @@ export function ServicesSection({ compact = false }: { compact?: boolean }) {
         </ul>
 
         {compact ? (
-          <Reveal className="mt-14">
+          <Reveal className="mt-16">
             <Link to="/services" className="btn-base btn-outline">
               Explore all services
             </Link>
@@ -74,18 +77,18 @@ export function ServicesSection({ compact = false }: { compact?: boolean }) {
 
 export function BeforeAfterSection() {
   return (
-    <section className="border-t border-border bg-cream">
-      <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10 lg:py-32">
+    <section className="seam-top bg-cream">
+      <div className="section-pad mx-auto max-w-[1400px] px-6 lg:px-10">
         <Reveal className="max-w-3xl">
           <p className="eyebrow">Before &amp; After</p>
-          <h2 className="display-lg mt-5">Transforming spaces. Elevating lives.</h2>
-          <p className="body-lg mt-6 max-w-xl">
+          <h2 className="display-lg mt-6">Transforming spaces. Elevating lives.</h2>
+          <p className="body-lg mt-7 max-w-xl">
             Drag each slider to see how thoughtful planning, materials, and styling
             reshape a room from the ground up.
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-3">
+        <div className="mt-20 grid gap-14 lg:grid-cols-3">
           {transformations.map((item, i) => (
             <Reveal key={item.title} delay={i * 90}>
               <BeforeAfterSlider
@@ -93,10 +96,10 @@ export function BeforeAfterSection() {
                 after={item.after}
                 label={item.title}
               />
-              <h3 className="mt-5 text-sm font-normal tracking-[0.16em] uppercase">
+              <h3 className="mt-6 text-[0.8125rem] font-normal tracking-[0.22em] uppercase">
                 {item.title}
               </h3>
-              <p className="mt-1 text-xs font-light text-muted-foreground">
+              <p className="mt-2 text-xs font-light tracking-[0.08em] text-muted-foreground">
                 {item.location}
               </p>
             </Reveal>
@@ -109,22 +112,27 @@ export function BeforeAfterSection() {
 
 export function ProcessSection() {
   return (
-    <section className="border-t border-border bg-background">
-      <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10 lg:py-32">
+    <section className="seam-top bg-background">
+      <div className="section-pad mx-auto max-w-[1400px] px-6 lg:px-10">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">The process</p>
-          <h2 className="display-lg mt-5">How we work together.</h2>
+          <h2 className="display-lg mt-6">How we work together.</h2>
         </Reveal>
 
-        <ol className="mt-16 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-20 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step, i) => (
-            <Reveal as="li" key={step.number} delay={i * 80} className="bg-background p-8 lg:p-10">
+            <Reveal
+              as="li"
+              key={step.number}
+              delay={i * 80}
+              className="bg-background p-10 transition-colors duration-500 hover:bg-cream/70 lg:p-12"
+            >
               <span className="font-display text-5xl text-beige">{step.number}</span>
-              <h3 className="mt-6 text-sm font-normal tracking-[0.2em] uppercase">
+              <h3 className="mt-8 text-[0.8125rem] font-normal tracking-[0.24em] uppercase">
                 {step.title}
               </h3>
-              <span className="rule-champagne mt-4" />
-              <p className="body-lg mt-4 text-sm">{step.description}</p>
+              <span className="rule-champagne mt-5" />
+              <p className="body-lg mt-5 text-sm">{step.description}</p>
             </Reveal>
           ))}
         </ol>
@@ -135,9 +143,9 @@ export function ProcessSection() {
 
 export function MissionSection() {
   return (
-    <section className="border-t border-border bg-cream">
-      <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-6 py-24 lg:grid-cols-2 lg:px-10 lg:py-32">
-        <Reveal className="img-zoom order-2 lg:order-1">
+    <section className="seam-top bg-cream">
+      <div className="section-pad mx-auto grid max-w-[1400px] items-center gap-16 px-6 lg:grid-cols-2 lg:gap-24 lg:px-10">
+        <Reveal className="img-frame order-2 lg:order-1">
           <img
             src={images.mission}
             alt="Warm, elegant dining room designed by Starr Decor Luxe"
@@ -147,14 +155,14 @@ export function MissionSection() {
             className="aspect-4/3 w-full object-cover"
           />
         </Reveal>
-        <Reveal className="order-1 lg:order-2 lg:pl-10">
+        <Reveal className="order-1 lg:order-2 lg:pl-12">
           <p className="eyebrow">Our mission</p>
-          <blockquote className="display-md mt-6">
+          <blockquote className="display-md mt-7 max-w-xl">
             “At Starr Decor Luxe, our mission is to create timeless, functional spaces
             that reflect the unique story of every client. We believe great design should
             feel beautiful, personal, and effortless.”
           </blockquote>
-          <span className="rule-champagne mt-8" />
+          <span className="rule-champagne mt-10" />
         </Reveal>
       </div>
     </section>
@@ -163,18 +171,18 @@ export function MissionSection() {
 
 export function CtaSection() {
   return (
-    <section className="bg-charcoal">
-      <div className="mx-auto max-w-[1400px] px-6 py-24 text-center lg:px-10 lg:py-36">
+    <section className="hairline-top bg-charcoal">
+      <div className="mx-auto max-w-[1400px] px-6 py-28 text-center lg:px-10 lg:py-44">
         <Reveal>
           <p className="eyebrow text-champagne">Let's begin</p>
-          <h2 className="display-lg mx-auto mt-6 max-w-2xl text-ivory">
+          <h2 className="display-lg mx-auto mt-8 max-w-2xl text-ivory">
             Ready to design a home you love?
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed font-light text-ivory/70">
+          <p className="mx-auto mt-7 max-w-xl text-base leading-[1.85] font-light text-ivory/70">
             Let's bring your vision to life. Book a consultation and take the first step
             toward creating a home that feels like you.
           </p>
-          <Link to="/contact" className="btn-base btn-light mt-10">
+          <Link to="/contact" className="btn-base btn-light mt-12">
             Book Your Consultation
           </Link>
         </Reveal>
