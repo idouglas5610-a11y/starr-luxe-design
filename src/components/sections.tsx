@@ -96,10 +96,10 @@ export function BeforeAfterSection() {
                 after={item.after}
                 label={item.title}
               />
-              <h3 className="mt-6 text-[0.8125rem] font-normal tracking-[0.22em] uppercase">
+              <h3 className="mt-6 text-sm font-medium tracking-[0.22em] uppercase">
                 {item.title}
               </h3>
-              <p className="mt-2 text-xs font-light tracking-[0.08em] text-muted-foreground">
+              <p className="mt-2 text-[0.8125rem] font-light tracking-[0.08em] text-muted-foreground">
                 {item.location}
               </p>
             </Reveal>

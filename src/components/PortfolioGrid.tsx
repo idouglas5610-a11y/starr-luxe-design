@@ -64,7 +64,7 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
                 {project.category}
               </span>
             </div>
-            <p className="body-lg mt-5 max-w-md text-sm">{project.description}</p>
+            <p className="body-lg mt-5 max-w-md text-[0.9375rem]">{project.description}</p>
           </Reveal>
         ))}
       </div>
