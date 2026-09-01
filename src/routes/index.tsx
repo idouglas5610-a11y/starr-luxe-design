@@ -37,7 +37,7 @@ function Index() {
           height={1200}
           className="absolute inset-0 size-full scale-105 object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/40 to-charcoal/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/55 to-charcoal/25" />
         <div className="relative mx-auto flex min-h-[92vh] max-w-[1400px] flex-col justify-end px-6 pb-24 lg:px-10 lg:pb-32">
           <Reveal>
             <p className="eyebrow text-champagne">{brand.tagline}</p>
