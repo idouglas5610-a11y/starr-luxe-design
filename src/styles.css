@@ -372,16 +372,29 @@
 
 @utility reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(28px);
+  filter: blur(6px);
   transition:
-    opacity 0.9s ease,
-    transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+    opacity 1.1s cubic-bezier(0.16, 0.84, 0.16, 1),
+    filter 1.1s cubic-bezier(0.16, 0.84, 0.16, 1),
+    transform 1.1s cubic-bezier(0.16, 0.84, 0.16, 1);
 }
 
 @utility reveal-in {
   opacity: 1;
   transform: none;
+  filter: blur(0);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
 
 @utility spaced-caps {
   letter-spacing: 0.35em;
