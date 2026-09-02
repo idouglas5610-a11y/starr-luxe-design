@@ -35,8 +35,8 @@ export const brand = {
 
 export const images = {
   hero,
-  designer,
-  mission,
+  designer: designerAsset.url,
+  mission: missionAsset.url,
 };
 
 export const navLinks = [
@@ -106,14 +106,14 @@ export const projects: {
     location: "Location placeholder",
     category: "Living Spaces",
     description: "A quiet, layered living room built around texture and warm light.",
-    image: project1,
+    image: salonAsset.url,
   },
   {
     name: "Marbury Kitchen",
     location: "Location placeholder",
     category: "Kitchens",
     description: "White oak, honed stone, and brass for a kitchen made to gather in.",
-    image: project2,
+    image: kitchenAsset.url,
   },
   {
     name: "Linden Primary Suite",
