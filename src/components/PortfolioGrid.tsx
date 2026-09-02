@@ -45,14 +45,14 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
       <div className="mt-16 grid gap-x-14 gap-y-20 md:grid-cols-2">
         {filtered.map((project, i) => (
           <Reveal as="article" key={project.name} delay={i * 70} className="group">
-            <div className="img-frame">
+            <div className="img-frame overflow-hidden">
               <img
                 src={project.image}
                 alt={`${project.name} interior design project`}
                 loading="lazy"
                 width={1200}
                 height={1000}
-                className="aspect-5/4 w-full object-cover"
+                className={cn("aspect-5/4 w-full object-cover", project.imageClass)}
               />
             </div>
             <div className="mt-7 flex items-start justify-between gap-6">

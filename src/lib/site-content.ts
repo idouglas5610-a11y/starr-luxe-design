@@ -108,6 +108,8 @@ export const projects: {
   category: Exclude<PortfolioCategory, "All">;
   description: string;
   image: string;
+  /** Optional extra classes to fine-tune the crop of this project's photo */
+  imageClass?: string;
 }[] = [
   {
     name: "The Hawthorne Residence",
@@ -122,6 +124,7 @@ export const projects: {
     category: "Kitchens",
     description: "White oak, honed stone, and brass for a kitchen made to gather in.",
     image: kitchenAsset.url,
+    imageClass: "scale-[1.15] object-[center_15%]",
   },
   {
     name: "Linden Primary Suite",
