@@ -225,7 +225,7 @@ export function CtaSection({ withPortrait = false }: { withPortrait?: boolean })
               loading="lazy"
               width={900}
               height={1200}
-              className="aspect-3/4 w-full object-cover object-top grayscale-[0.15]"
+              className="aspect-3/4 w-full scale-[1.15] object-cover object-[center_10%] grayscale-[0.15]"
             />
           </Reveal>
           <Reveal className="order-1 pb-20 lg:order-2 lg:pb-28">

@@ -52,7 +52,7 @@ function Index() {
               alt="Lead designer of Starr Decor Luxe standing in a bright, neutral living room"
               width={1200}
               height={1500}
-              className="h-[62vh] w-full object-cover object-top lg:h-[88vh]"
+              className="h-[62vh] w-full scale-[1.18] object-cover object-[center_12%] lg:h-[88vh]"
             />
           </Reveal>
         </div>
@@ -68,7 +68,7 @@ function Index() {
               loading="lazy"
               width={1200}
               height={1500}
-              className="h-[52vh] w-full object-cover object-[center_28%] lg:h-full"
+              className="h-[52vh] w-full scale-[1.15] object-cover object-[center_15%] lg:h-full"
             />
           </Reveal>
           <Reveal className="flex flex-col justify-center bg-cream px-6 py-16 lg:px-16 lg:py-28">
