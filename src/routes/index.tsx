@@ -60,18 +60,18 @@ function Index() {
 
       {/* Designer intro — image left, copy right */}
       <section className="border-b border-border bg-background">
-        <div className="mx-auto grid max-w-[1600px] items-center gap-10 lg:grid-cols-2 lg:gap-0">
-          <Reveal>
+        <div className="mx-auto grid max-w-[1600px] gap-10 lg:min-h-[82vh] lg:grid-cols-2 lg:items-stretch lg:gap-0">
+          <Reveal className="lg:h-full">
             <img
               src={images.designerKitchen}
               alt="Designer styling a light, modern kitchen"
               loading="lazy"
               width={1200}
               height={1500}
-              className="h-[52vh] w-full object-cover lg:h-[82vh]"
+              className="h-[52vh] w-full object-cover object-[center_28%] lg:h-full"
             />
           </Reveal>
-          <Reveal className="bg-cream px-6 py-16 lg:px-16 lg:py-28">
+          <Reveal className="flex flex-col justify-center bg-cream px-6 py-16 lg:px-16 lg:py-28">
             <p className="eyebrow">Hi, I&apos;m Jessica</p>
             <h2 className="display-md mt-6">
               The designer
