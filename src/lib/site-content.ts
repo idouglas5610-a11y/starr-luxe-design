@@ -5,7 +5,8 @@
 
 import hero from "@/assets/hero.jpg";
 import designerAsset from "@/assets/img_3368.jpeg.asset.json";
-import missionAsset from "@/assets/img_2402.jpeg.asset.json";
+import portraitAsset from "@/assets/img_2402.jpeg.asset.json";
+import mission from "@/assets/mission.jpg";
 import salonAsset from "@/assets/img_2397.jpeg.asset.json";
 import kitchenAsset from "@/assets/img_2393.jpeg.asset.json";
 import project2 from "@/assets/project-2.jpg";
@@ -35,8 +36,15 @@ export const brand = {
 
 export const images = {
   hero,
+  mission,
+  /** Hero: designer standing in a white living room */
+  heroPortrait: salonAsset.url,
+  /** Designer intro: kitchen shot */
+  designerKitchen: kitchenAsset.url,
+  /** About page headshot */
   designer: designerAsset.url,
-  mission: missionAsset.url,
+  /** Seated portrait used in the closing CTA */
+  ctaPortrait: portraitAsset.url,
 };
 
 export const navLinks = [
