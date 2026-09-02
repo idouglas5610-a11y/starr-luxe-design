@@ -4,9 +4,10 @@
  */
 
 import hero from "@/assets/hero.jpg";
-import designer from "@/assets/designer.jpg";
-import mission from "@/assets/mission.jpg";
-import project1 from "@/assets/project-1.jpg";
+import designerAsset from "@/assets/img_3368.jpeg.asset.json";
+import missionAsset from "@/assets/img_2402.jpeg.asset.json";
+import salonAsset from "@/assets/img_2397.jpeg.asset.json";
+import kitchenAsset from "@/assets/img_2393.jpeg.asset.json";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
