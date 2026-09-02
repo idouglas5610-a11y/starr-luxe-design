@@ -75,14 +75,35 @@ export function ServicesSection({ compact = false }: { compact?: boolean }) {
   );
 }
 
-export function BeforeAfterSection() {
+export function BeforeAfterSection({
+  variant = "light",
+  centered = false,
+  showLink = false,
+}: {
+  variant?: "light" | "dark";
+  centered?: boolean;
+  showLink?: boolean;
+}) {
+  const dark = variant === "dark";
   return (
-    <section className="seam-top bg-cream">
+    <section
+      className={dark ? "hairline-top bg-charcoal" : "seam-top bg-cream"}
+    >
       <div className="section-pad mx-auto max-w-[1400px] px-6 lg:px-10">
-        <Reveal className="max-w-3xl">
-          <p className="eyebrow">Before &amp; After</p>
-          <h2 className="display-lg mt-6">Transforming spaces. Elevating lives.</h2>
-          <p className="body-lg mt-7 max-w-xl">
+        <Reveal className={centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+          <p className={dark ? "eyebrow text-champagne" : "eyebrow"}>
+            Transforming spaces. Elevating lives.
+          </p>
+          <h2 className={dark ? "display-lg mt-6 text-ivory" : "display-lg mt-6"}>
+            Before &amp; After
+          </h2>
+          <p
+            className={
+              dark
+                ? "mx-auto mt-7 max-w-xl text-base leading-[1.85] font-light text-ivory/70"
+                : "body-lg mt-7 max-w-xl"
+            }
+          >
             Drag each slider to see how thoughtful planning, materials, and styling
             reshape a room from the ground up.
           </p>
@@ -96,15 +117,38 @@ export function BeforeAfterSection() {
                 after={item.after}
                 label={item.title}
               />
-              <h3 className="mt-6 text-sm font-medium tracking-[0.22em] uppercase">
+              <h3
+                className={
+                  dark
+                    ? "mt-6 text-sm font-medium tracking-[0.22em] text-ivory uppercase"
+                    : "mt-6 text-sm font-medium tracking-[0.22em] uppercase"
+                }
+              >
                 {item.title}
               </h3>
-              <p className="mt-2 text-[0.8125rem] font-light tracking-[0.08em] text-muted-foreground">
+              <p
+                className={
+                  dark
+                    ? "mt-2 text-[0.8125rem] font-light tracking-[0.08em] text-ivory/60"
+                    : "mt-2 text-[0.8125rem] font-light tracking-[0.08em] text-muted-foreground"
+                }
+              >
                 {item.location}
               </p>
             </Reveal>
           ))}
         </div>
+
+        {showLink ? (
+          <Reveal className="mt-16 text-center">
+            <Link
+              to="/portfolio"
+              className={dark ? "btn-base btn-outline-light" : "btn-base btn-outline"}
+            >
+              View more projects
+            </Link>
+          </Reveal>
+        ) : null}
       </div>
     </section>
   );
@@ -169,7 +213,39 @@ export function MissionSection() {
   );
 }
 
-export function CtaSection() {
+export function CtaSection({ withPortrait = false }: { withPortrait?: boolean }) {
+  if (withPortrait) {
+    return (
+      <section className="hairline-top bg-charcoal">
+        <div className="mx-auto grid max-w-[1400px] items-end gap-12 px-6 pt-20 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1fr)] lg:gap-20 lg:px-10 lg:pt-28">
+          <Reveal className="order-2 lg:order-1">
+            <img
+              src={images.ctaPortrait}
+              alt="Lead designer of Starr Decor Luxe in a bright living room"
+              loading="lazy"
+              width={900}
+              height={1200}
+              className="aspect-3/4 w-full object-cover object-top grayscale-[0.15]"
+            />
+          </Reveal>
+          <Reveal className="order-1 pb-20 lg:order-2 lg:pb-28">
+            <p className="eyebrow text-champagne">Let&apos;s begin</p>
+            <h2 className="display-lg mt-8 max-w-xl text-ivory">
+              Ready to design a home you love?
+            </h2>
+            <span className="rule-champagne mt-8" />
+            <p className="mt-7 max-w-lg text-base leading-[1.85] font-light text-ivory/70">
+              Let&apos;s bring your vision to life. Book your consultation today and
+              take the first step toward a home that feels like you.
+            </p>
+            <Link to="/contact" className="btn-base btn-light mt-12">
+              Book Your Consultation
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+    );
+  }
   return (
     <section className="hairline-top bg-charcoal">
       <div className="mx-auto max-w-[1400px] px-6 py-28 text-center lg:px-10 lg:py-44">
