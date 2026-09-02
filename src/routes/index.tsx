@@ -46,7 +46,7 @@ function Index() {
             </Link>
           </Reveal>
 
-          <Reveal className="relative">
+          <Reveal className="relative overflow-hidden">
             <img
               src={images.heroPortrait}
               alt="Lead designer of Starr Decor Luxe standing in a bright, neutral living room"
@@ -61,7 +61,7 @@ function Index() {
       {/* Designer intro — image left, copy right */}
       <section className="border-b border-border bg-background">
         <div className="mx-auto grid max-w-[1600px] gap-10 lg:min-h-[82vh] lg:grid-cols-2 lg:items-stretch lg:gap-0">
-          <Reveal className="lg:h-full">
+          <Reveal className="overflow-hidden lg:h-full">
             <img
               src={images.designerKitchen}
               alt="Designer styling a light, modern kitchen"

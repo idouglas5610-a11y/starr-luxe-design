@@ -30,7 +30,7 @@ function AboutPage() {
 
       <section className="bg-background">
         <div className="section-pad mx-auto grid max-w-[1400px] items-center gap-16 px-6 lg:grid-cols-2 lg:gap-24 lg:px-10">
-          <Reveal className="img-frame">
+          <Reveal className="img-frame overflow-hidden">
             <img
               src={images.designer}
               alt="Portrait of the lead designer at Starr Decor Luxe"

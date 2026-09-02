@@ -218,7 +218,7 @@ export function CtaSection({ withPortrait = false }: { withPortrait?: boolean })
     return (
       <section className="hairline-top bg-charcoal">
         <div className="mx-auto grid max-w-[1400px] items-end gap-12 px-6 pt-20 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1fr)] lg:gap-20 lg:px-10 lg:pt-28">
-          <Reveal className="order-2 lg:order-1">
+          <Reveal className="order-2 overflow-hidden lg:order-1">
             <img
               src={images.ctaPortrait}
               alt="Lead designer of Starr Decor Luxe in a bright living room"
