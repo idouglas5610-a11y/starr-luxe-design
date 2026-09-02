@@ -1,11 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
-import { PortfolioGrid } from "@/components/PortfolioGrid";
 import {
   BeforeAfterSection,
   CtaSection,
-  MissionSection,
-  ProcessSection,
   ServicesSection,
 } from "@/components/sections";
 import { brand, images } from "@/lib/site-content";
@@ -29,62 +26,105 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-border">
-        <img
-          src={images.hero}
-          alt="Elegant living room with warm neutral furnishings"
-          width={1920}
-          height={1200}
-          className="absolute inset-0 size-full scale-105 object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/55 to-charcoal/25" />
-        <div className="relative mx-auto flex min-h-[92vh] max-w-[1400px] flex-col justify-end px-6 pb-24 lg:px-10 lg:pb-32">
-          <Reveal>
-            <p className="eyebrow text-champagne">{brand.tagline}</p>
-            <span className="rule-champagne mt-7" />
-            <h1 className="display-xl mt-8 max-w-3xl text-ivory">
-              Interiors designed to feel like home, crafted to last a lifetime.
+      {/* Hero — copy left, designer portrait right */}
+      <section className="border-b border-border bg-cream">
+        <div className="mx-auto grid max-w-[1600px] items-center gap-10 lg:grid-cols-2 lg:gap-0">
+          <Reveal className="px-6 pt-20 pb-6 lg:py-32 lg:pr-16 lg:pl-10">
+            <p className="eyebrow">{brand.tagline}</p>
+            <h1 className="display-xl mt-8">
+              Creating homes
+              <br />
+              <em className="font-normal italic">worth coming home to.</em>
             </h1>
-            <p className="mt-8 max-w-lg text-base leading-[1.85] font-light text-ivory/75">
-              A full-service interior design studio creating warm, elevated spaces
-              tailored to the way you live.
+            <span className="rule-champagne mt-9" />
+            <p className="body-lg mt-8 max-w-md">
+              Full-service interior design tailored to your lifestyle. From concept to
+              completion, we handle every detail so you can simply enjoy your home.
             </p>
-            <div className="mt-12 flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-base btn-light">
-                Book a Consultation
-              </Link>
-              <Link to="/portfolio" className="btn-base btn-outline-light">
-                View Portfolio
-              </Link>
-            </div>
+            <Link to="/contact" className="btn-base btn-dark mt-11">
+              Book Your Consultation
+            </Link>
+          </Reveal>
+
+          <Reveal className="relative">
+            <img
+              src={images.heroPortrait}
+              alt="Lead designer of Starr Decor Luxe standing in a bright, neutral living room"
+              width={1200}
+              height={1500}
+              className="h-[62vh] w-full object-cover object-top lg:h-[88vh]"
+            />
           </Reveal>
         </div>
       </section>
 
-      <ServicesSection compact />
-      <BeforeAfterSection />
-
-      <section className="seam-top bg-background">
-        <div className="section-pad mx-auto max-w-[1400px] px-6 lg:px-10">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">Selected work</p>
-            <h2 className="display-lg mt-6">A portfolio of quiet luxury.</h2>
+      {/* Designer intro — image left, copy right */}
+      <section className="border-b border-border bg-background">
+        <div className="mx-auto grid max-w-[1600px] gap-10 lg:min-h-[82vh] lg:grid-cols-2 lg:items-stretch lg:gap-0">
+          <Reveal className="lg:h-full">
+            <img
+              src={images.designerKitchen}
+              alt="Designer styling a light, modern kitchen"
+              loading="lazy"
+              width={1200}
+              height={1500}
+              className="h-[52vh] w-full object-cover object-[center_28%] lg:h-full"
+            />
           </Reveal>
-          <div className="mt-16">
-            <PortfolioGrid limit={4} />
-          </div>
-          <Reveal className="mt-16">
-            <Link to="/portfolio" className="btn-base btn-outline">
-              See the full portfolio
+          <Reveal className="flex flex-col justify-center bg-cream px-6 py-16 lg:px-16 lg:py-28">
+            <p className="eyebrow">Hi, I&apos;m Jessica</p>
+            <h2 className="display-md mt-6">
+              The designer
+              <br />
+              behind the details.
+            </h2>
+            <span className="rule-champagne mt-8" />
+            <p className="body-lg mt-8 max-w-md">
+              As the creative force behind Starr Decor Luxe, I believe your home should
+              reflect who you are and how you live. I combine timeless elegance with
+              cozy, livable luxury to create spaces that are both beautiful and
+              functional.
+            </p>
+            <p className="font-display mt-7 text-2xl italic">
+              Let&apos;s design your dream home.
+            </p>
+            <Link to="/about" className="btn-base btn-dark mt-10">
+              Learn More About Me
             </Link>
           </Reveal>
         </div>
       </section>
 
+      <BeforeAfterSection variant="dark" centered showLink />
 
-      <MissionSection />
-      <ProcessSection />
-      <CtaSection />
+      {/* Mission — copy left, still life right */}
+      <section className="bg-cream">
+        <div className="mx-auto grid max-w-[1600px] items-center gap-10 lg:grid-cols-2 lg:gap-0">
+          <Reveal className="px-6 py-16 lg:px-10 lg:py-28">
+            <h2 className="display-md">Our Mission</h2>
+            <span className="rule-champagne mt-7" />
+            <p className="body-lg mt-8 max-w-md">
+              At Starr Decor Luxe, our mission is to create timeless, functional spaces
+              that reflect the unique story of each client. We are committed to
+              delivering exceptional design, personalized service, and an elevated
+              experience from concept to completion.
+            </p>
+          </Reveal>
+          <Reveal>
+            <img
+              src={images.mission}
+              alt="Styled console table with books, candle, and greenery"
+              loading="lazy"
+              width={1400}
+              height={1000}
+              className="aspect-4/3 w-full object-cover"
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      <ServicesSection compact />
+      <CtaSection withPortrait />
     </>
   );
 }
