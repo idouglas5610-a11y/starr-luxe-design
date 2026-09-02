@@ -108,6 +108,8 @@ export const projects: {
   category: Exclude<PortfolioCategory, "All">;
   description: string;
   image: string;
+  /** Optional extra classes to fine-tune the crop of this project's photo */
+  imageClass?: string;
 }[] = [
   {
     name: "The Hawthorne Residence",
