@@ -124,6 +124,7 @@ export const projects: {
     category: "Kitchens",
     description: "White oak, honed stone, and brass for a kitchen made to gather in.",
     image: kitchenAsset.url,
+    imageClass: "scale-[1.15] object-[center_15%]",
   },
   {
     name: "Linden Primary Suite",
