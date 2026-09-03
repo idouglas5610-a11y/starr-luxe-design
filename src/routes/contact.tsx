@@ -40,15 +40,6 @@ function ContactPage() {
                 </a>
               </li>
               <li>
-                <span className="eyebrow block">Phone</span>
-                <a
-                  className="link-underline mt-2 inline-block"
-                  href={`tel:${brand.phone.replace(/[^\d+]/g, "")}`}
-                >
-                  {brand.phone}
-                </a>
-              </li>
-              <li>
                 <span className="eyebrow block">Service area</span>
                 <p className="mt-2 text-muted-foreground">{brand.serviceArea}</p>
               </li>

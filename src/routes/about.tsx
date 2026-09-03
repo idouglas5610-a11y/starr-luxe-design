@@ -37,7 +37,7 @@ function AboutPage() {
               loading="lazy"
               width={1200}
               height={1500}
-              className="aspect-4/5 w-full scale-[1.12] object-cover object-[center_18%]"
+              className="aspect-4/5 w-full scale-[1.35] object-cover object-[center_12%]"
             />
           </Reveal>
           <Reveal className="lg:pl-10">

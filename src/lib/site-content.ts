@@ -9,6 +9,7 @@ import portraitAsset from "@/assets/img_2402.jpeg.asset.json";
 import mission from "@/assets/mission.jpg";
 import salonAsset from "@/assets/img_2397.jpeg.asset.json";
 import kitchenAsset from "@/assets/img_2393.jpeg.asset.json";
+import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
@@ -24,14 +25,9 @@ import ba3After from "@/assets/ba-3-after.jpg";
 export const brand = {
   name: "Starr Decor Luxe",
   tagline: "Timeless interiors. Cozy luxury.",
-  email: "hello@starrdecorluxe.com",
-  phone: "(555) 014-8820",
-  serviceArea: "Greater metro area & nationwide virtual design",
-  socials: [
-    { label: "Instagram", href: "https://instagram.com" },
-    { label: "Facebook", href: "https://facebook.com" },
-    { label: "Pinterest", href: "https://pinterest.com" },
-  ],
+  email: "jessica@starrdecor.com",
+  serviceArea: "Powder Springs, Georgia",
+  socials: [] as { label: string; href: string }[],
 };
 
 export const images = {
@@ -116,15 +112,14 @@ export const projects: {
     location: "Location placeholder",
     category: "Living Spaces",
     description: "A quiet, layered living room built around texture and warm light.",
-    image: salonAsset.url,
+    image: project1,
   },
   {
     name: "Marbury Kitchen",
     location: "Location placeholder",
     category: "Kitchens",
     description: "White oak, honed stone, and brass for a kitchen made to gather in.",
-    image: kitchenAsset.url,
-    imageClass: "scale-[1.15] object-[center_15%]",
+    image: project2,
   },
   {
     name: "Linden Primary Suite",
