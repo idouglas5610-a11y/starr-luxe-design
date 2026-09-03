@@ -50,11 +50,6 @@ export function SiteFooter() {
                   {brand.email}
                 </a>
               </li>
-              <li>
-                <a className="link-underline" href={`tel:${brand.phone.replace(/[^\d+]/g, "")}`}>
-                  {brand.phone}
-                </a>
-              </li>
               <li className="text-muted-foreground">{brand.serviceArea}</li>
             </ul>
             <div className="mt-7 flex gap-3">
