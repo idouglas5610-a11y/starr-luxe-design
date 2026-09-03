@@ -1,14 +1,43 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { budgetRanges, projectTypes } from "@/lib/site-content";
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mjyvrelz";
 
 const fieldClass =
   "w-full border-b border-input bg-transparent px-0 py-3 text-sm font-light text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-charcoal";
 const labelClass = "eyebrow block mb-2";
 
-export function ConsultationForm() {
-  const [submitted, setSubmitted] = useState(false);
+type Status = "idle" | "submitting" | "success" | "error";
 
-  if (submitted) {
+export function ConsultationForm() {
+  const [status, setStatus] = useState<Status>("idle");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    // Use the submitter's email as the reply-to so the studio can reply directly.
+    data.set("_replyto", String(data.get("email") ?? ""));
+
+    setStatus("submitting");
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
     return (
       <div className="border border-border bg-card p-10 text-center">
         <span className="rule-champagne mx-auto" />
@@ -19,7 +48,7 @@ export function ConsultationForm() {
         </p>
         <button
           type="button"
-          onClick={() => setSubmitted(false)}
+          onClick={() => setStatus("idle")}
           className="btn-base btn-outline mt-8"
         >
           Send another request
@@ -29,13 +58,7 @@ export function ConsultationForm() {
   }
 
   return (
-    <form
-      className="grid gap-8 sm:grid-cols-2"
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSubmitted(true);
-      }}
-    >
+    <form className="grid gap-8 sm:grid-cols-2" onSubmit={handleSubmit}>
       <div>
         <label className={labelClass} htmlFor="fullName">
           Full Name
@@ -111,9 +134,19 @@ export function ConsultationForm() {
           placeholder="Rooms, timeline, style you're drawn to…"
         />
       </div>
+      {status === "error" ? (
+        <p role="alert" className="sm:col-span-2 text-sm font-light text-destructive">
+          Something went wrong sending your request. Please try again, or email us
+          directly at jessica@starrdecor.com.
+        </p>
+      ) : null}
       <div className="sm:col-span-2">
-        <button type="submit" className="btn-base btn-dark w-full sm:w-auto">
-          Request a Consultation
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="btn-base btn-dark w-full sm:w-auto disabled:opacity-60"
+        >
+          {status === "submitting" ? "Sending…" : "Request a Consultation"}
         </button>
       </div>
     </form>
