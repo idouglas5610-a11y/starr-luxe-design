@@ -58,21 +58,11 @@ function Index() {
         </div>
       </section>
 
-      {/* Designer intro — image left, copy right */}
-      <section className="border-b border-border bg-background">
-        <div className="mx-auto grid max-w-[1600px] gap-10 lg:min-h-[82vh] lg:grid-cols-2 lg:items-stretch lg:gap-0">
-          <Reveal className="overflow-hidden lg:h-full">
-            <img
-              src={images.designerKitchen}
-              alt="Designer styling a light, modern kitchen"
-              loading="lazy"
-              width={1200}
-              height={1500}
-              className="h-[52vh] w-full scale-[1.15] object-cover object-[center_15%] lg:h-full"
-            />
-          </Reveal>
-          <Reveal className="flex flex-col justify-center bg-cream px-6 py-16 lg:px-16 lg:py-28">
-            <p className="eyebrow">Hi, I&apos;m Jessica</p>
+      {/* Designer intro — copy only */}
+      <section className="border-b border-border bg-cream">
+        <div className="mx-auto max-w-[1600px] px-6 py-16 lg:px-10 lg:py-28">
+          <Reveal className="max-w-xl">
+            <p className="eyebrow">Hi, I'm Jessica</p>
             <h2 className="display-md mt-6">
               The designer
               <br />
@@ -86,7 +76,7 @@ function Index() {
               functional.
             </p>
             <p className="font-display mt-7 text-2xl italic">
-              Let&apos;s design your dream home.
+              Let's design your dream home.
             </p>
             <Link to="/about" className="btn-base btn-dark mt-10">
               Learn More About Me
