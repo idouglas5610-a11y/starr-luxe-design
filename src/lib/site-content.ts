@@ -9,6 +9,7 @@ import portraitAsset from "@/assets/img_2402.jpeg.asset.json";
 import mission from "@/assets/mission.jpg";
 import salonAsset from "@/assets/img_2397.jpeg.asset.json";
 import kitchenAsset from "@/assets/img_2393.jpeg.asset.json";
+import heroPortraitAsset from "@/assets/img_2402-2.jpeg.asset.json";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
