@@ -221,11 +221,11 @@ export function CtaSection({ withPortrait = false }: { withPortrait?: boolean })
           <Reveal className="order-2 overflow-hidden lg:order-1">
             <img
               src={images.ctaPortrait}
-              alt="Lead designer of Starr Decor Luxe in a bright living room"
+              alt="Lead designer of Starr Decor Luxe standing in a bright living room"
               loading="lazy"
               width={900}
               height={1200}
-              className="aspect-3/4 w-full scale-[1.15] object-cover object-[center_10%] grayscale-[0.15]"
+              className="aspect-3/4 w-full scale-[1.05] object-cover object-[center_18%] grayscale-[0.15]"
             />
           </Reveal>
           <Reveal className="order-1 pb-20 lg:order-2 lg:pb-28">

@@ -39,8 +39,8 @@ export const images = {
   designerKitchen: kitchenAsset.url,
   /** About page headshot */
   designer: designerAsset.url,
-  /** Seated portrait used in the closing CTA */
-  ctaPortrait: portraitAsset.url,
+  /** Standing portrait used in the closing CTA */
+  ctaPortrait: salonAsset.url,
 };
 
 export const navLinks = [
