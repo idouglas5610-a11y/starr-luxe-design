@@ -34,8 +34,8 @@ export const brand = {
 export const images = {
   hero,
   mission,
-  /** Hero: designer standing in a white living room */
-  heroPortrait: salonAsset.url,
+  /** Hero: designer sitting in a white living room */
+  heroPortrait: heroPortraitAsset.url,
   /** Designer intro: kitchen shot */
   designerKitchen: kitchenAsset.url,
   /** About page headshot */
