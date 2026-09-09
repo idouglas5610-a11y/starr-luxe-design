@@ -16,12 +16,12 @@ import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
 import project5 from "@/assets/project-5.jpg";
 import project6 from "@/assets/project-6.jpg";
-import ba1Before from "@/assets/ba-1-before.jpg";
-import ba1After from "@/assets/ba-1-after.jpg";
-import ba2Before from "@/assets/ba-2-before.jpg";
-import ba2After from "@/assets/ba-2-after.jpg";
-import ba3Before from "@/assets/ba-3-before.jpg";
-import ba3After from "@/assets/ba-3-after.jpg";
+import officeBeforeAsset from "@/assets/office-before.jpeg.asset.json";
+import officeAfterAsset from "@/assets/office-after.png.asset.json";
+import laundryBeforeAsset from "@/assets/laundry-before.jpg.asset.json";
+import laundryAfterAsset from "@/assets/laundry-after.jpeg.asset.json";
+import livingBeforeAsset from "@/assets/living-before.jpg.asset.json";
+import livingAfterAsset from "@/assets/living-after.jpeg.asset.json";
 
 export const brand = {
   name: "Starr Decor Luxe",
@@ -154,22 +154,22 @@ export const projects: {
 
 export const transformations = [
   {
-    title: "Hawthorne Living Room",
-    location: "Location placeholder",
-    before: ba1Before,
-    after: ba1After,
+    title: "Home Office",
+    location: "Powder Springs, Georgia",
+    before: officeBeforeAsset.url,
+    after: officeAfterAsset.url,
   },
   {
-    title: "Marbury Kitchen",
-    location: "Location placeholder",
-    before: ba2Before,
-    after: ba2After,
+    title: "Laundry Room",
+    location: "Powder Springs, Georgia",
+    before: laundryBeforeAsset.url,
+    after: laundryAfterAsset.url,
   },
   {
-    title: "Linden Primary Suite",
-    location: "Location placeholder",
-    before: ba3Before,
-    after: ba3After,
+    title: "Open Living Space",
+    location: "Powder Springs, Georgia",
+    before: livingBeforeAsset.url,
+    after: livingAfterAsset.url,
   },
 ];
 
