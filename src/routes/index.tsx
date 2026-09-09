@@ -32,7 +32,7 @@ function Index() {
           <Reveal className="px-6 pt-20 pb-6 lg:py-32 lg:pr-16 lg:pl-10">
             <p className="eyebrow">{brand.tagline}</p>
             <h1 className="display-xl mt-8">
-              Creating homes
+              Creating houses
               <br />
               <em className="font-normal italic">worth coming home to.</em>
             </h1>
