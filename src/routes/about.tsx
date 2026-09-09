@@ -56,8 +56,8 @@ function AboutPage() {
             <span className="rule-champagne mt-8" />
             <dl className="mt-10 grid gap-8 sm:grid-cols-3">
               {[
-                { k: "Founded", v: "Studio placeholder" },
-                { k: "Projects", v: "Placeholder" },
+                { k: "Founded", v: "Starr Decor Luxe" },
+                { k: "Projects", v: "Residential Interiors" },
                 { k: "Serving", v: brand.serviceArea },
               ].map((item) => (
                 <div key={item.k}>
