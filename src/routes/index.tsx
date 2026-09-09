@@ -114,7 +114,7 @@ function Index() {
       </section>
 
       <ServicesSection compact />
-      <CtaSection withPortrait />
+      <CtaSection />
     </>
   );
 }
