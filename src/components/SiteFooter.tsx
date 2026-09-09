@@ -76,6 +76,18 @@ export function SiteFooter() {
           <p>© 2026 Starr Decor Luxe. All Rights Reserved.</p>
           <p className="spaced-caps text-taupe">Interior Design Studio</p>
         </div>
+
+        <p className="mt-6 text-center text-[0.7rem] font-light tracking-wide text-muted-foreground/60">
+          Website designed by{" "}
+          <a
+            href="https://preview--peakpixel.lovable.app/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="link-underline transition-colors hover:text-foreground"
+          >
+            Peak Pixel
+          </a>
+        </p>
       </div>
     </footer>
   );
