@@ -106,7 +106,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@200;300;400;500&display=swap",
       },
-      { rel: "icon", type: "image/png", href: "/StarrDecor.png" },
+      { rel: "icon", type: "image/png", sizes: "16x16", href: "/StarrDecor-16.png" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/StarrDecor-32.png" },
+      { rel: "icon", type: "image/png", sizes: "48x48", href: "/StarrDecor.png" },
     ],
   }),
 
