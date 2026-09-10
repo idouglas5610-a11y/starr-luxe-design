@@ -4,7 +4,7 @@
  */
 
 import hero from "@/assets/hero.jpg";
-import designerAsset from "@/assets/img_3368.jpeg.asset.json";
+import designerAsset from "@/assets/img_3368-2.png.asset.json";
 import portraitAsset from "@/assets/img_2402.jpeg.asset.json";
 import mission from "@/assets/mission.jpg";
 import salonAsset from "@/assets/img_2397.jpeg.asset.json";
