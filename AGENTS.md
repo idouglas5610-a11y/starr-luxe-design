@@ -9,5 +9,5 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Consultation form submits client-side (browser fetch) to Web3Forms `api.web3forms.com/submit`. Why: Web3Forms' free plan rejects API calls from datacenter/server IPs (403 "Pro plan is required"), so a server-side proxy can never work on this plan.
+- Consultation form submits client-side (browser fetch, JSON) to Formspree. Why: keeps it simple and works from visitor browsers without a server proxy.
 

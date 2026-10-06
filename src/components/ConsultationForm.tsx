@@ -5,8 +5,7 @@ const fieldClass =
   "w-full border-b border-input bg-transparent px-0 py-3 text-sm font-light text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-charcoal";
 const labelClass = "eyebrow block mb-2";
 
-// Publishable Web3Forms access key — designed to be used in client-side form code.
-const WEB3FORMS_ACCESS_KEY = "64d3f21a-ee2f-438a-add8-7e27ffe344e3";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnpqveqp";
 
 type ConsultationData = {
   fullName: string;
@@ -18,11 +17,9 @@ type ConsultationData = {
   message: string;
 };
 
-async function submitToWeb3Forms(data: ConsultationData, withCc: boolean) {
+async function submitToWeb3Forms(data: ConsultationData, _withCc: boolean) {
   const payload: Record<string, string> = {
-    access_key: WEB3FORMS_ACCESS_KEY,
-    subject: "New Starr Decor Luxe Consultation Request",
-    from_name: "Starr Decor Luxe",
+    _subject: "New Starr Decor Luxe Consultation Request",
     name: data.fullName,
     email: data.email,
     phone: data.phone,
@@ -31,17 +28,12 @@ async function submitToWeb3Forms(data: ConsultationData, withCc: boolean) {
     "Budget Range": data.budget,
     message: data.message,
   };
-  // ccemail is only available on supported Web3Forms plans; include when possible.
-  if (withCc) {
-    payload["ccemail"] = "idouglas5610@gmail.com";
-  }
-  const res = await fetch("https://api.web3forms.com/submit", {
+  const res = await fetch(FORMSPREE_ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify(payload),
   });
-  const body = (await res.json().catch(() => null)) as { success?: boolean } | null;
-  return res.ok && body?.success === true;
+  return res.ok;
 }
 
 type FormStatus = "idle" | "submitting" | "error";
