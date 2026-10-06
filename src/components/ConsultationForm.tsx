@@ -1,10 +1,48 @@
 import { useState } from "react";
-import { submitConsultation } from "@/lib/consultation.functions";
 import { budgetRanges, projectTypes } from "@/lib/site-content";
 
 const fieldClass =
   "w-full border-b border-input bg-transparent px-0 py-3 text-sm font-light text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-charcoal";
 const labelClass = "eyebrow block mb-2";
+
+// Publishable Web3Forms access key — designed to be used in client-side form code.
+const WEB3FORMS_ACCESS_KEY = "__WEB3FORMS_ACCESS_KEY__";
+
+type ConsultationData = {
+  fullName: string;
+  email: string;
+  phone: string;
+  date: string;
+  projectType: string;
+  budget: string;
+  message: string;
+};
+
+async function submitToWeb3Forms(data: ConsultationData, withCc: boolean) {
+  const payload: Record<string, string> = {
+    access_key: WEB3FORMS_ACCESS_KEY,
+    subject: "New Starr Decor Luxe Consultation Request",
+    from_name: "Starr Decor Luxe",
+    name: data.fullName,
+    email: data.email,
+    phone: data.phone,
+    "Preferred Consultation Date": data.date,
+    "Project Type": data.projectType,
+    "Budget Range": data.budget,
+    message: data.message,
+  };
+  // ccemail is only available on supported Web3Forms plans; include when possible.
+  if (withCc) {
+    payload["ccemail"] = "idouglas5610@gmail.com";
+  }
+  const res = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(payload),
+  });
+  const body = (await res.json().catch(() => null)) as { success?: boolean } | null;
+  return res.ok && body?.success === true;
+}
 
 type FormStatus = "idle" | "submitting" | "error";
 
@@ -14,22 +52,22 @@ export function ConsultationForm() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = event.currentTarget;
-    const data = new FormData(form);
+    const data = new FormData(event.currentTarget);
     setStatus("submitting");
     try {
-      const result = await submitConsultation({
-        data: {
-          fullName: String(data.get("fullName") ?? ""),
-          email: String(data.get("email") ?? ""),
-          phone: String(data.get("phone") ?? ""),
-          date: String(data.get("date") ?? ""),
-          projectType: String(data.get("projectType") ?? ""),
-          budget: String(data.get("budget") ?? ""),
-          message: String(data.get("message") ?? ""),
-        },
-      });
-      if (result.success) {
+      const values: ConsultationData = {
+        fullName: String(data.get("fullName") ?? ""),
+        email: String(data.get("email") ?? ""),
+        phone: String(data.get("phone") ?? ""),
+        date: String(data.get("date") ?? ""),
+        projectType: String(data.get("projectType") ?? ""),
+        budget: String(data.get("budget") ?? ""),
+        message: String(data.get("message") ?? ""),
+      };
+      // Try with the CC copy first; if the plan doesn't support ccemail, retry without it.
+      const ok =
+        (await submitToWeb3Forms(values, true)) || (await submitToWeb3Forms(values, false));
+      if (ok) {
         setSubmitted(true);
       } else {
         setStatus("error");
@@ -63,7 +101,7 @@ export function ConsultationForm() {
   }
 
   return (
-    <form className="grid gap-8 sm:grid-cols-2" onSubmit={handleSubmit} noValidate={false}>
+    <form className="grid gap-8 sm:grid-cols-2" onSubmit={handleSubmit}>
       <div>
         <label className={labelClass} htmlFor="fullName">
           Full Name
