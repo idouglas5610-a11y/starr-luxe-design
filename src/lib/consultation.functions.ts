@@ -30,7 +30,7 @@ async function submitToWeb3Forms(
   };
   // ccemail is only available on supported Web3Forms plans; include when possible.
   if (withCc) {
-    payload.ccemail = "idouglas5610@gmail.com";
+    payload["ccemail"] = "idouglas5610@gmail.com";
   }
   const res = await fetch("https://api.web3forms.com/submit", {
     method: "POST",
