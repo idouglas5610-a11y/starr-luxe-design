@@ -1,16 +1,83 @@
-import { useForm, ValidationError } from "@formspree/react";
+import { useState } from "react";
 import { budgetRanges, projectTypes } from "@/lib/site-content";
-
-const FORM_ID = "xrpgljzr";
 
 const fieldClass =
   "w-full border-b border-input bg-transparent px-0 py-3 text-sm font-light text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-charcoal";
 const labelClass = "eyebrow block mb-2";
 
-export function ConsultationForm() {
-  const [state, handleSubmit] = useForm(FORM_ID);
+// Publishable Web3Forms access key — designed to be used in client-side form code.
+const WEB3FORMS_ACCESS_KEY = "64d3f21a-ee2f-438a-add8-7e27ffe344e3";
 
-  if (state.succeeded) {
+type ConsultationData = {
+  fullName: string;
+  email: string;
+  phone: string;
+  date: string;
+  projectType: string;
+  budget: string;
+  message: string;
+};
+
+async function submitToWeb3Forms(data: ConsultationData, withCc: boolean) {
+  const payload: Record<string, string> = {
+    access_key: WEB3FORMS_ACCESS_KEY,
+    subject: "New Starr Decor Luxe Consultation Request",
+    from_name: "Starr Decor Luxe",
+    name: data.fullName,
+    email: data.email,
+    phone: data.phone,
+    "Preferred Consultation Date": data.date,
+    "Project Type": data.projectType,
+    "Budget Range": data.budget,
+    message: data.message,
+  };
+  // ccemail is only available on supported Web3Forms plans; include when possible.
+  if (withCc) {
+    payload["ccemail"] = "idouglas5610@gmail.com";
+  }
+  const res = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(payload),
+  });
+  const body = (await res.json().catch(() => null)) as { success?: boolean } | null;
+  return res.ok && body?.success === true;
+}
+
+type FormStatus = "idle" | "submitting" | "error";
+
+export function ConsultationForm() {
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [submitted, setSubmitted] = useState(false);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    setStatus("submitting");
+    try {
+      const values: ConsultationData = {
+        fullName: String(data.get("fullName") ?? ""),
+        email: String(data.get("email") ?? ""),
+        phone: String(data.get("phone") ?? ""),
+        date: String(data.get("date") ?? ""),
+        projectType: String(data.get("projectType") ?? ""),
+        budget: String(data.get("budget") ?? ""),
+        message: String(data.get("message") ?? ""),
+      };
+      // Try with the CC copy first; if the plan doesn't support ccemail, retry without it.
+      const ok =
+        (await submitToWeb3Forms(values, true)) || (await submitToWeb3Forms(values, false));
+      if (ok) {
+        setSubmitted(true);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (submitted) {
     return (
       <div className="border border-border bg-card p-10 text-center">
         <span className="rule-champagne mx-auto" />
@@ -21,7 +88,10 @@ export function ConsultationForm() {
         </p>
         <button
           type="button"
-          onClick={() => window.location.reload()}
+          onClick={() => {
+            setSubmitted(false);
+            setStatus("idle");
+          }}
           className="btn-base btn-outline mt-8"
         >
           Send another request
@@ -37,7 +107,6 @@ export function ConsultationForm() {
           Full Name
         </label>
         <input id="fullName" name="fullName" required className={fieldClass} placeholder="Jane Doe" />
-        <ValidationError className="mt-1 text-xs font-light text-destructive" field="fullName" errors={state.errors} />
       </div>
       <div>
         <label className={labelClass} htmlFor="email">
@@ -51,7 +120,6 @@ export function ConsultationForm() {
           className={fieldClass}
           placeholder="you@email.com"
         />
-        <ValidationError className="mt-1 text-xs font-light text-destructive" field="email" errors={state.errors} />
       </div>
       <div>
         <label className={labelClass} htmlFor="phone">
@@ -64,14 +132,12 @@ export function ConsultationForm() {
           className={fieldClass}
           placeholder="(555) 000-0000"
         />
-        <ValidationError className="mt-1 text-xs font-light text-destructive" field="phone" errors={state.errors} />
       </div>
       <div>
         <label className={labelClass} htmlFor="date">
           Preferred Consultation Date
         </label>
         <input id="date" name="date" type="date" className={fieldClass} />
-        <ValidationError className="mt-1 text-xs font-light text-destructive" field="date" errors={state.errors} />
       </div>
       <div>
         <label className={labelClass} htmlFor="projectType">
@@ -85,7 +151,6 @@ export function ConsultationForm() {
             </option>
           ))}
         </select>
-        <ValidationError className="mt-1 text-xs font-light text-destructive" field="projectType" errors={state.errors} />
       </div>
       <div>
         <label className={labelClass} htmlFor="budget">
@@ -99,7 +164,6 @@ export function ConsultationForm() {
             </option>
           ))}
         </select>
-        <ValidationError className="mt-1 text-xs font-light text-destructive" field="budget" errors={state.errors} />
       </div>
       <div className="sm:col-span-2">
         <label className={labelClass} htmlFor="message">
@@ -112,16 +176,20 @@ export function ConsultationForm() {
           className={fieldClass}
           placeholder="Rooms, timeline, style you're drawn to…"
         />
-        <ValidationError className="mt-1 text-xs font-light text-destructive" field="message" errors={state.errors} />
       </div>
-      <ValidationError className="sm:col-span-2 text-sm font-light text-destructive" errors={state.errors} />
+      {status === "error" ? (
+        <p className="sm:col-span-2 text-sm font-light text-destructive">
+          Something went wrong and your request couldn't be sent. Please try again, or
+          email us directly and we'll get back to you.
+        </p>
+      ) : null}
       <div className="sm:col-span-2">
         <button
           type="submit"
-          disabled={state.submitting}
+          disabled={status === "submitting"}
           className="btn-base btn-dark w-full sm:w-auto disabled:opacity-60"
         >
-          {state.submitting ? "Sending…" : "Request a Consultation"}
+          {status === "submitting" ? "Sending…" : "Request a Consultation"}
         </button>
       </div>
     </form>
