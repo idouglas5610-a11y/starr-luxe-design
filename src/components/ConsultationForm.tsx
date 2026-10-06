@@ -6,7 +6,7 @@ const fieldClass =
 const labelClass = "eyebrow block mb-2";
 
 // Publishable Web3Forms access key — designed to be used in client-side form code.
-const WEB3FORMS_ACCESS_KEY = "__WEB3FORMS_ACCESS_KEY__";
+const WEB3FORMS_ACCESS_KEY = "64d3f21a-ee2f-438a-add8-7e27ffe344e3";
 
 type ConsultationData = {
   fullName: string;
