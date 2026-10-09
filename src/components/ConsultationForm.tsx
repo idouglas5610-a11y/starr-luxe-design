@@ -27,6 +27,7 @@ async function submitToWeb3Forms(data: ConsultationData, _withCc: boolean) {
     "Project Type": data.projectType,
     "Budget Range": data.budget,
     message: data.message,
+    _gotcha: "",
   };
   const res = await fetch(FORMSPREE_ENDPOINT, {
     method: "POST",
@@ -56,9 +57,12 @@ export function ConsultationForm() {
         budget: String(data.get("budget") ?? ""),
         message: String(data.get("message") ?? ""),
       };
-      // Try with the CC copy first; if the plan doesn't support ccemail, retry without it.
-      const ok =
-        (await submitToWeb3Forms(values, true)) || (await submitToWeb3Forms(values, false));
+      // Honeypot: real visitors never fill this hidden field; bots do.
+      if (String(data.get("_gotcha") ?? "")) {
+        setSubmitted(true);
+        return;
+      }
+      const ok = await submitToWeb3Forms(values, false);
       if (ok) {
         setSubmitted(true);
       } else {
@@ -94,6 +98,14 @@ export function ConsultationForm() {
 
   return (
     <form className="grid gap-8 sm:grid-cols-2" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+      />
       <div>
         <label className={labelClass} htmlFor="fullName">
           Full Name
