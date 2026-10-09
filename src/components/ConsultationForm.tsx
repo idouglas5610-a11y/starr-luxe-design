@@ -5,7 +5,9 @@ const fieldClass =
   "w-full border-b border-input bg-transparent px-0 py-3 text-sm font-light text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-charcoal";
 const labelClass = "eyebrow block mb-2";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnpqveqp";
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+// Public Web3Forms access key (designed to be used in browser code)
+const WEB3FORMS_ACCESS_KEY = "ffdba266-fcd6-416f-b08c-2914cba0eca1";
 
 type ConsultationData = {
   fullName: string;
@@ -17,9 +19,12 @@ type ConsultationData = {
   message: string;
 };
 
-async function submitToWeb3Forms(data: ConsultationData, _withCc: boolean) {
+async function submitToWeb3Forms(data: ConsultationData) {
   const payload: Record<string, string> = {
-    _subject: "New Starr Decor Luxe Consultation Request",
+    access_key: WEB3FORMS_ACCESS_KEY,
+    subject: "New Starr Decor Luxe Consultation Request",
+    from_name: "Starr Decor Luxe",
+    replyto: data.email,
     name: data.fullName,
     email: data.email,
     phone: data.phone,
@@ -27,14 +32,14 @@ async function submitToWeb3Forms(data: ConsultationData, _withCc: boolean) {
     "Project Type": data.projectType,
     "Budget Range": data.budget,
     message: data.message,
-    _gotcha: "",
   };
-  const res = await fetch(FORMSPREE_ENDPOINT, {
+  const res = await fetch(WEB3FORMS_ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify(payload),
   });
-  return res.ok;
+  const json = (await res.json().catch(() => null)) as { success?: boolean } | null;
+  return res.ok && json?.success === true;
 }
 
 type FormStatus = "idle" | "submitting" | "error";
