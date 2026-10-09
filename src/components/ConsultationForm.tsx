@@ -57,11 +57,6 @@ export function ConsultationForm() {
         budget: String(data.get("budget") ?? ""),
         message: String(data.get("message") ?? ""),
       };
-      // Honeypot: real visitors never fill this hidden field; bots do.
-      if (String(data.get("_gotcha") ?? "")) {
-        setSubmitted(true);
-        return;
-      }
       const ok = await submitToWeb3Forms(values, false);
       if (ok) {
         setSubmitted(true);
@@ -98,14 +93,6 @@ export function ConsultationForm() {
 
   return (
     <form className="grid gap-8 sm:grid-cols-2" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="_gotcha"
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
-      />
       <div>
         <label className={labelClass} htmlFor="fullName">
           Full Name
