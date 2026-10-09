@@ -15,6 +15,14 @@ function PinterestIcon({ className }: { className?: string }) {
   );
 }
 
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6Z" />
+    </svg>
+  );
+}
+
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-cream">
@@ -64,7 +72,13 @@ export function SiteFooter() {
                     aria-label={social.label}
                     className="inline-flex h-11 w-11 items-center justify-center border border-border text-foreground/70 transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
                   >
-                    {Icon ? <Icon className="size-4" /> : <PinterestIcon className="size-4" />}
+                    {Icon ? (
+                      <Icon className="size-4" />
+                    ) : social.label === "TikTok" ? (
+                      <TikTokIcon className="size-4" />
+                    ) : (
+                      <PinterestIcon className="size-4" />
+                    )}
                   </a>
                 );
               })}

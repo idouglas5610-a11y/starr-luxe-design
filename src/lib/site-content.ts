@@ -28,7 +28,10 @@ export const brand = {
   tagline: "Timeless interiors. Cozy luxury.",
   email: "jessica@starrdecor.com",
   serviceArea: "Powder Springs, Georgia",
-  socials: [] as { label: string; href: string }[],
+  socials: [
+    { label: "Instagram", href: "https://www.instagram.com/starrdecorluxe/" },
+    { label: "TikTok", href: "https://www.tiktok.com/@starrdecor" },
+  ] as { label: string; href: string }[],
 };
 
 export const images = {
