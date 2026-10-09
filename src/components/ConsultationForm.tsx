@@ -62,7 +62,7 @@ export function ConsultationForm() {
         budget: String(data.get("budget") ?? ""),
         message: String(data.get("message") ?? ""),
       };
-      const ok = await submitToWeb3Forms(values, false);
+      const ok = await submitToWeb3Forms(values);
       if (ok) {
         setSubmitted(true);
       } else {
