@@ -9,5 +9,5 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Consultation form submits client-side (browser fetch, JSON) to Formspree. Why: keeps it simple and works from visitor browsers without a server proxy.
+- Consultation form submits client-side (browser fetch, JSON) to Web3Forms with the public access key in code. Why: Web3Forms' free plan blocks server-side requests, so it must run from visitor browsers.
 
